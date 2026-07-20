@@ -1,0 +1,7 @@
+artifacts_root:artifacts
+
+data_ingestion:
+root_dir:artifacts/data_ingestion
+local_data_file:data/raw/PCOS_data_without_infertility copy.xlsx
+train_data_path:artifacts/data_ingestion/train.csv
+test_data_path:artifacts/data_ingestion/test.csv
