@@ -1,4 +1,3 @@
-# OvaSense
 # 🩺 PCOS Detection - End-to-End MLOps Project
 
 An end-to-end Machine Learning project for PCOS (Polycystic Ovary Syndrome) Detection built using industry-standard MLOps practices. This project focuses on modular architecture, experiment reproducibility, data versioning, and production-ready code.
