@@ -1,0 +1,48 @@
+COLUMNS:
+  Sl. No: int
+  Patient File No.: int
+  PCOS (Y/N): int
+  Age (yrs): float
+  Weight (Kg): float
+  Height(Cm): float
+  BMI: float
+  Blood Group: int
+  Pulse rate(bpm): float
+  RR (breaths/min): float
+  Hb(g/dl): float
+  Cycle(R/I): int
+  Cycle length(days): float
+  Marraige Status (Yrs): float
+  Pregnant(Y/N): int
+  No. of aborptions: float
+  I beta-HCG(mIU/mL): float
+  II beta-HCG(mIU/mL): float
+  FSH(mIU/mL): float
+  LH(mIU/mL): float
+  FSH/LH: float
+  Hip(inch): float
+  Waist(inch): float
+  Waist:Hip Ratio: float
+  TSH (mIU/L): float
+  AMH(ng/mL): float
+  PRL(ng/mL): float
+  Vit D3 (ng/mL): float
+  PRG(ng/mL): float
+  RBS(mg/dl): float
+  Weight gain(Y/N): int
+  hair growth(Y/N): int
+  Skin darkening (Y/N): int
+  Hair loss(Y/N): int
+  Pimples(Y/N): int
+  Fast food (Y/N): int
+  Reg.Exercise(Y/N): int
+  BP _Systolic (mmHg): float
+  BP _Diastolic (mmHg): float
+  Follicle No. (L): float
+  Follicle No. (R): float
+  Avg. F size (L) (mm): float
+  Avg. F size (R) (mm): float
+  Endometrium (mm): float
+
+TARGET_COLUMN:
+  name: PCOS (Y/N)
