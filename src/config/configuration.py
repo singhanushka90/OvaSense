@@ -1,6 +1,7 @@
 from src.constants import CONFIG_FILE_PATH,PARAMS_FILE_PATH,SCHEMA_FILE_PATH
 from src.utils.common import read_yaml,create_directories
-from src.entity.config_entity import DataIngestionConfig,DataValidationConfig
+from pathlib import Path
+from src.entity.config_entity import DataIngestionConfig,DataValidationConfig,FeatureEngineeringConfig,DataTransformationConfig,ModelTrainingConfig
 
 
 class ConfigurationManager:
@@ -48,3 +49,37 @@ def get_feature_engineering_config(self)->FeatureEngineeringConfig:
                                               sheet_name=self.config.sheet_name
                                             )
     return feature_engineering_config
+
+def get_data_transformation_config(self)->DataTransformationConfig:
+    config=self.config.data_transformation
+    fe_config=self.config.feature_engineering
+    create_directories([config.root_dir])
+    data_transformation_config=DataTransformationConfig(root_dir=config.root_dir,
+                                                processed_data_path=fe_config.processed_data_path,
+                                                train_features_path=config.train_features_path,
+                                                test_features_path=config.test_features_path,
+                                                train_target_path=config.train_target_path,
+                                                test_target_path=config.test_target_path,
+                                            )
+    return data_transformation_config
+
+
+
+
+def get_model_trainer_config(self)->ModelTrainingConfig:
+    config=self.config.model_trainer
+    params=self.params.model_trainer
+    dt_config=self.config.data_transformation
+    create_directories([config.root_dir])
+    model_trainer_config=ModelTrainingConfig(root_dir=config.root_dir,
+                                                
+                                                train_features_path=dt_config.train_features_path,
+                                                test_features_path=dt_config.test_features_path,
+                                                train_target_path=dt_config.train_target_path,
+                                                test_target_path=dt_config.test_target_path,
+                                                model_path=config.model_path,
+                                                random_state=params.random_state,
+                                                n_estimators=params.n_estimators,
+                                                max_depth=params.max_depth
+                                            )
+    return model_trainer_config

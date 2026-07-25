@@ -74,7 +74,7 @@ def load_bin(path:Path):
         logger.info(f"Loading binary file from : {path}")
         data=joblib.load(path)
         logger.info("Binary file loaded succesfully")
-        return from dvclive.catalyst import DVCLiveCallback
+        return data
     except Exception as e:
         raise CustomException (e,sys)
 
