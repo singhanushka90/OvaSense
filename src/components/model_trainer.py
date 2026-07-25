@@ -78,8 +78,8 @@ class ModelTrainer:
 
                 accuracy = accuracy_score(y_test, y_pred)
                 model_scores.append({
-                "Model": name,
-                "Accuracy": accuracy})
+                    "Model": name,
+                    "Accuracy": accuracy})
                 logger.info(f"{name} Accuracy : {accuracy}")
             if accuracy > best_accuracy:
                 best_accuracy = accuracy

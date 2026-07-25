@@ -21,9 +21,10 @@ class DataValidationConfig:
 @dataclass(frozen=True)
 class FeatureEngineeringConfig:
     root_dir:str
-    processed_daat_path:str
+    processed_data_path:str
     local_data_file:str
     sheet_name:str
+    selected_features: list
 
 @dataclass(frozen=True)
 class DataTransformationConfig:
@@ -38,4 +39,21 @@ class DataTransformationConfig:
 @dataclass(frozen=True)
 class ModelTrainingConfig:
     root_dir: str
-    trained_model_path: str
+    train_features_path: str
+    test_features_path: str
+    train_target_path: str
+    test_target_path: str
+    model_path: str
+    random_state: int
+    n_estimators: int
+    max_depth: int
+
+
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: str
+    model_path: str
+    test_features_path: str
+    test_target_path: str
+    metrics_file_path: str

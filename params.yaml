@@ -9,8 +9,7 @@ selected_features:
    - Pimples(Y/N)
    - Weight (Kg)
    - BMI_Update
-
-target_column: PCOS (Y/N)
+   - PCOS (Y/N)
 
 test_size: 0.2
 random_state: 42

@@ -17,7 +17,7 @@ class DataValidation:
             df=pd.read_excel(self.config.local_data_file,sheet_name=self.config.sheet_name)
             logger.info("Dataset loaded successfully")
             schema=read_yaml(self.config.schema_file_path)
-            scheam_columns=list(schema.COLUMNS.keys())
+            schemas_columns=list(schema.COLUMNS.keys())
             dataset_columns=list(df.columns)
             for column in schemas_columns:
                 if column not in dataset_columns:

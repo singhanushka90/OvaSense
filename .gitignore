@@ -3,7 +3,7 @@ __pycache__/
 *.pyc 
 .env 
 logs/ 
-*.log 
+*.logs
 artifacts/ 
 data/raw/*
 !data/raw/*.dvc
@@ -13,3 +13,5 @@ models/
 *.pkl 
 .vscode 
 .dvc/cache
+data
+.dvcignore

@@ -33,13 +33,13 @@ class FeatureEngineering:
     def create_bmi(self,df):
         try:
             logger.info("Create BMI_Update feature")
-            df["BMI_Update"]=(df["Weight (kg)"]/((df["Height(Cm)"]/100)**2))
+            df["BMI_Update"]=(df["Weight (Kg)"]/((df["Height(Cm)"]/100)**2))
             logger.info("BMI_UPDATE feature created")
             return df
         except Exception as e:
             raise CustomException(e,sys)
 
-    def fil_numeric(self,df):
+    def fill_numeric(self,df):
         try:
             logger.info("fill numeric columns")
             num_cols=df.select_dtypes(include="number").columns
@@ -63,18 +63,19 @@ class FeatureEngineering:
         try:
             logger.info("Saving processed dataset")
             os.makedirs(self.config.root_dir,exist_ok=True)
-            df.tocsv(self.config.processed_data_path,index=False)
+            df.to_csv(self.config.processed_data_path,index=False)
             logger.info("Processed dataset saved successfully")
         except Exception as e:
             raise CustomException(e,sys)
 
 
-    def initiate_feature_engineering(self,selected_features):
+    def initiate_feature_engineering(self):
         try:
             df=self.load_data()
             df=self.clean_column_name(df)
             df=self.create_bmi(df)
             df=self.fill_numeric(df)
+            selected_features=self.config.selected_features
             df=self.selected_features(df,selected_features)
             self.saved_processed_data(df)
             logger.info("Feature Engineering completed successfully")
