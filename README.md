@@ -148,6 +148,5 @@ Prediction Pipeline
 
 **Anushka Singh**
 
-AI & Data Science Student
 
 Building Industry-Level Machine Learning & MLOps Projects.
