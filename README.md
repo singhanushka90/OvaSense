@@ -1,33 +1,53 @@
-# 🩺 PCOS Detection - End-to-End MLOps Project
+# 🩺 PCOS Detection System
 
-An end-to-end Machine Learning project for PCOS (Polycystic Ovary Syndrome) Detection built using industry-standard MLOps practices. This project focuses on modular architecture, experiment reproducibility, data versioning, and production-ready code.
+A production-ready Machine Learning application for predicting **Polycystic Ovary Syndrome (PCOS)** using clinical and lifestyle features. The project follows a modular MLOps architecture with FastAPI backend, JWT authentication, MongoDB, and an end-to-end ML pipeline.
 
 ---
 
-## 📌 Project Status
+## 🚀 Features
 
-🚧 Currently Under Development
+- End-to-End ML Pipeline
+- Data Validation
+- Feature Engineering
+- Data Transformation
+- Model Training
+- Model Evaluation
+- Prediction Pipeline
+- FastAPI REST API
+- JWT Authentication
+- MongoDB Atlas Integration
+- Modular Project Structure
+- Logging & Exception Handling
+- YAML-based Configuration
 
-Completed:
-- ✅ Project Structure
-- ✅ DVC Dataset Tracking
-- ✅ Logger
-- ✅ Custom Exception Handling
-- ✅ Configuration Management
-- ✅ YAML Configuration
+---
 
-Upcoming:
-- 🔄 Data Ingestion
-- 🔄 Data Validation
-- 🔄 Data Transformation
-- 🔄 Feature Engineering
-- 🔄 Model Training
-- 🔄 Model Evaluation
-- 🔄 Prediction Pipeline
-- 🔄 FastAPI Deployment
-- 🔄 MLflow Integration
-- 🔄 Docker
-- 🔄 GitHub Actions (CI/CD)
+## 🛠️ Tech Stack
+
+### Machine Learning
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- XGBoost
+
+### Backend
+- FastAPI
+- Pydantic
+- Uvicorn
+
+### Authentication
+- JWT (python-jose)
+- Passlib (bcrypt)
+
+### Database
+- MongoDB Atlas
+- PyMongo
+
+### MLOps
+- DVC
+- DVCLive
+- YAML Configuration
 
 ---
 
@@ -36,111 +56,117 @@ Upcoming:
 ```text
 PCOS_Detection/
 │
-├── config/
-│   └── config.yaml
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── notebook/
-│   └── pcos.ipynb
-│
+├── app/
 ├── src/
-│   ├── components/
-│   ├── config/
-│   ├── constants/
-│   ├── entity/
-│   ├── pipeline/
-│   └── utils/
-│
+├── config/
+├── artifacts/
+├── notebook/
+├── logs/
 ├── train.py
 ├── predict.py
-├── params.yaml
 ├── requirements.txt
-└── setup.py
+└── README.md
 ```
 
 ---
 
-## ⚙️ Tech Stack
+## 📊 Selected Features
 
-- Python
-- Scikit-Learn
-- Pandas
-- NumPy
-- DVC
-- Git & GitHub
-- YAML
-- FastAPI *(Planned)*
-- MLflow *(Planned)*
-- Docker *(Planned)*
+- Follicle No. (R)
+- Follicle No. (L)
+- Skin Darkening
+- Hair Growth
+- Weight Gain
+- Cycle(R/I)
+- Fast Food
+- Pimples
+- BMI
+- Weight
 
----
+Target Variable:
 
-## ✨ Features
-
-- Modular Code Structure
-- Data Versioning using DVC
-- Custom Logging
-- Custom Exception Handling
-- Configuration Management
-- Production Ready Architecture
-- Reusable Components
+- PCOS (Y/N)
 
 ---
 
-## 📁 Dataset
-
-Dataset is tracked using **DVC**.
+## ⚙️ Machine Learning Pipeline
 
 ```
-data/raw/pcos_data.xlsx
-```
-
----
-
-## 🚀 Workflow
-
-```
-Config
-   ↓
-Configuration Manager
-   ↓
 Data Ingestion
-   ↓
+      │
+      ▼
 Data Validation
-   ↓
-Data Transformation
-   ↓
+      │
+      ▼
 Feature Engineering
-   ↓
+      │
+      ▼
+Data Transformation
+      │
+      ▼
 Model Training
-   ↓
+      │
+      ▼
 Model Evaluation
-   ↓
+      │
+      ▼
 Prediction Pipeline
 ```
 
 ---
 
-## 📅 Current Progress
+## 🔐 Authentication Flow
 
-- [x] Project Setup
-- [x] DVC Setup
-- [x] Logger
-- [x] Exception Handling
-- [x] Config Management
-- [ ] Data Ingestion
-- [ ] Data Validation
-- [ ] Feature Engineering
-- [ ] Model Training
-- [ ] Model Evaluation
-- [ ] Prediction Pipeline
-- [ ] FastAPI
-- [ ] MLflow
-- [ ] Docker
-- [ ] CI/CD
+```
+Register
+     │
+     ▼
+Password Hashing
+     │
+     ▼
+MongoDB Atlas
+     │
+     ▼
+Login
+     │
+     ▼
+JWT Access Token
+     │
+     ▼
+Protected Prediction API
+```
+
+---
+
+## 🌐 API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | / | Home |
+| POST | /auth/register | Register User |
+| POST | /auth/login | User Login |
+| POST | /predict | Predict PCOS (Protected) |
+
+---
+
+## 📈 Model
+
+Current Best Model:
+
+- XGBoost Classifier
+
+---
+
+## 📌 Future Improvements
+
+- React Frontend
+- Prediction History
+- Docker
+- Docker Compose
+- GitHub Actions CI/CD
+- Model Monitoring
+- SHAP Explainability
+- AWS Deployment
 
 ---
 
@@ -148,5 +174,4 @@ Prediction Pipeline
 
 **Anushka Singh**
 
-
-
+AI Engineer (Student)
