@@ -165,7 +165,6 @@ Current Best Model:
 - Docker Compose
 - GitHub Actions CI/CD
 - Model Monitoring
-- SHAP Explainability
 - AWS Deployment
 
 ---
