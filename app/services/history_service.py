@@ -3,10 +3,10 @@ from app.database.database import predictions_collection
 
 class HistoryService:
     @staticmethod
-    def save_prediction(user_id:str,prediction:str,result:str):
+    def save_prediction(user_id:str,prediction:int,result:str):
         history={
             "user_id":user_id,
-            "prediction":prediction,
+            "prediction":int(prediction),
             "result":result,
             "created_at":datetime.now(timezone.utc)
         }
