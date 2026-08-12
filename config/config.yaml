@@ -41,3 +41,4 @@ model_evaluation:
   test_features_path: artifacts/data_transformation/X_test.csv
   test_target_path: artifacts/data_transformation/y_test.csv
   metrics_file_path: artifacts/model_evaluation/metrics.json
+  

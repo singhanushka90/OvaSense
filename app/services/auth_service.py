@@ -47,7 +47,7 @@ class AuthService:
                 return {"message": "Invalid Email"}
             if not verify_password(form_data.password,user["password"]):
                 return {"message": "Invalid Password"}
-            token = create_access_token({"email": user["email"]})
+            token = create_access_token({"user_id":str(user["_id"]),"email": user["email"]})
             logger.info("Login Successful")
             return {
                 "access_token": token,"token_type": "bearer" 
