@@ -1,176 +1,120 @@
-# 🩺 PCOS Detection System
+# OvaSense 🩺
 
-A production-ready Machine Learning application for predicting **Polycystic Ovary Syndrome (PCOS)** using clinical and lifestyle features. The project follows a modular MLOps architecture with FastAPI backend, JWT authentication, MongoDB, and an end-to-end ML pipeline.
+### AI-Powered PCOS Screening & Prediction Platform
 
----
+OvaSense is an end-to-end machine learning application designed to provide
+AI-based PCOS screening predictions from selected clinical and lifestyle
+features.
 
-## 🚀 Features
+The project combines a trained Machine Learning model with a secure
+FastAPI backend, JWT authentication, MongoDB-based prediction history,
+and a modern web interface.
 
-- End-to-End ML Pipeline
-- Data Validation
-- Feature Engineering
-- Data Transformation
-- Model Training
-- Model Evaluation
-- Prediction Pipeline
-- FastAPI REST API
-- JWT Authentication
-- MongoDB Atlas Integration
-- Modular Project Structure
-- Logging & Exception Handling
-- YAML-based Configuration
+> ⚠️ **Medical Disclaimer**
+>
+> OvaSense is an educational and machine-learning screening project.
+> Its predictions are not a medical diagnosis and should not replace
+> professional medical advice, clinical examination, or laboratory testing.
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Key Features
 
-### Machine Learning
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- XGBoost
+### 🤖 Machine Learning
 
-### Backend
-- FastAPI
-- Pydantic
-- Uvicorn
+- End-to-end ML prediction pipeline
+- Data preprocessing and feature engineering
+- Trained classification model
+- Prediction pipeline for inference
+- Model and preprocessing artifacts management
+- MLflow experiment/model tracking
 
-### Authentication
-- JWT (python-jose)
-- Passlib (bcrypt)
+### 🔐 Authentication & Security
 
-### Database
-- MongoDB Atlas
-- PyMongo
+- User registration
+- Secure password hashing
+- JWT-based authentication
+- Protected API endpoints
+- User-specific prediction history
+- Passwords are never returned through API responses
 
-### MLOps
-- DVC
-- DVCLive
-- YAML Configuration
+### 🔮 PCOS Prediction
+
+Users can submit relevant features such as:
+
+- Follicle count (Right)
+- Follicle count (Left)
+- Skin darkening
+- Hair growth
+- Weight gain
+- Menstrual cycle information
+- Fast food consumption
+- Pimples
+- Weight
+- BMI
+
+The backend processes these features through the trained ML pipeline and
+returns a prediction result.
+
+### 📊 Prediction History
+
+- Store prediction results in MongoDB
+- User-specific history
+- Latest predictions shown first
+- Pagination support
+- Delete individual prediction records
+
+### 👤 User Profile
+
+- View authenticated user's profile
+- Username and email information
+- Protected using JWT authentication
+
+### 🚀 Production-Oriented Backend
+
+- Modular FastAPI architecture
+- Service-layer design
+- Pydantic request/response schemas
+- Centralized configuration
+- Logging
+- Custom exception handling
+- MongoDB Atlas integration
+- Swagger/OpenAPI documentation
 
 ---
 
-## 📂 Project Structure
+# 🏗️ Architecture
 
 ```text
-PCOS_Detection/
-│
-├── app/
-├── src/
-├── config/
-├── artifacts/
-├── notebook/
-├── logs/
-├── train.py
-├── predict.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-## 📊 Selected Features
-
-- Follicle No. (R)
-- Follicle No. (L)
-- Skin Darkening
-- Hair Growth
-- Weight Gain
-- Cycle(R/I)
-- Fast Food
-- Pimples
-- BMI
-- Weight
-
-Target Variable:
-
-- PCOS (Y/N)
-
----
-
-## ⚙️ Machine Learning Pipeline
-
-```
-Data Ingestion
-      │
-      ▼
-Data Validation
-      │
-      ▼
-Feature Engineering
-      │
-      ▼
-Data Transformation
-      │
-      ▼
-Model Training
-      │
-      ▼
-Model Evaluation
-      │
-      ▼
-Prediction Pipeline
-```
-
----
-
-## 🔐 Authentication Flow
-
-```
-Register
-     │
-     ▼
-Password Hashing
-     │
-     ▼
-MongoDB Atlas
-     │
-     ▼
-Login
-     │
-     ▼
-JWT Access Token
-     │
-     ▼
-Protected Prediction API
-```
-
----
-
-## 🌐 API Endpoints
-
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| GET | / | Home |
-| POST | /auth/register | Register User |
-| POST | /auth/login | User Login |
-| POST | /predict | Predict PCOS (Protected) |
-
----
-
-## 📈 Model
-
-Current Best Model:
-
-- XGBoost Classifier
-
----
-
-## 📌 Future Improvements
-
-- React Frontend
-- Prediction History
-- Docker
-- Docker Compose
-- GitHub Actions CI/CD
-- Model Monitoring
-- AWS Deployment
-
----
-
-## 👩‍💻 Author
-
-**Anushka Singh**
-
-AI Engineer (Student)
+                        ┌─────────────────────┐
+                        │     React Frontend  │
+                        │       (Vite)        │
+                        └──────────┬──────────┘
+                                   │
+                                Axios
+                                   │
+                                   ▼
+                        ┌─────────────────────┐
+                        │      FastAPI        │
+                        │       Backend       │
+                        └──────────┬──────────┘
+                                   │
+                ┌──────────────────┼──────────────────┐
+                │                  │                  │
+                ▼                  ▼                  ▼
+           JWT Auth          Prediction API      User APIs
+                │                  │                  │
+                │                  ▼                  │
+                │        ML Prediction Pipeline      │
+                │                  │                  │
+                │                  ▼                  │
+                │            ML Model                │
+                │                                     │
+                └──────────────┬──────────────────────┘
+                               │
+                               ▼
+                         MongoDB Atlas
+                       ┌────────────────┐
+                       │   users_db     │
+                       │   predict      │
+                       └────────────────┘
