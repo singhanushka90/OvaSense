@@ -1,178 +1,142 @@
 # OvaSense 🩺
 
-### AI-Powered PCOS Screening & Prediction Platform
+> **AI-Powered PCOS Screening & Prediction Platform**
 
-OvaSense is an end-to-end machine learning application designed to provide
-AI-based PCOS screening predictions from selected clinical and lifestyle
-features.
+OvaSense is an end-to-end Machine Learning application that provides AI-based PCOS screening predictions from selected clinical and lifestyle features. It combines an ML prediction pipeline with a secure FastAPI backend, JWT authentication, MongoDB Atlas, MLflow, and a React-based frontend.
 
-The project combines a trained Machine Learning model with a secure
-FastAPI backend, JWT authentication, MongoDB-based prediction history,
-and a modern web interface.
+> ⚠️ **Disclaimer:** OvaSense is an educational screening project. Its predictions are not a medical diagnosis and should not replace professional medical advice or clinical evaluation.
 
-> ⚠️ **Medical Disclaimer**
->
-> OvaSense is an educational and machine-learning screening project.
-> Its predictions are not a medical diagnosis and should not replace
-> professional medical advice, clinical examination, or laboratory testing.
+## ✨ Features
 
----
+- 🤖 ML-based PCOS screening prediction
+- 🔐 JWT authentication & secure password hashing
+- 👤 User registration, login & profile
+- 🔮 Real-time prediction API
+- 📊 User-specific prediction history
+- 📄 Pagination & prediction deletion
+- 🗄️ MongoDB Atlas integration
+- 📈 MLflow experiment tracking
+- 📝 Logging & custom exception handling
+- ⚡ FastAPI + Swagger/OpenAPI
+- 🎨 React frontend with modern responsive UI
 
-## ✨ Key Features
-
-### 🤖 Machine Learning
-
-- End-to-end ML prediction pipeline
-- Data preprocessing and feature engineering
-- Trained classification model
-- Prediction pipeline for inference
-- Model and preprocessing artifacts management
-- MLflow experiment/model tracking
-
-### 🔐 Authentication & Security
-
-- User registration
-- Secure password hashing
-- JWT-based authentication
-- Protected API endpoints
-- User-specific prediction history
-- Passwords are never returned through API responses
-
-### 🔮 PCOS Prediction
-
-Users can submit relevant features such as:
-
-- Follicle count (Right)
-- Follicle count (Left)
-- Skin darkening
-- Hair growth
-- Weight gain
-- Menstrual cycle information
-- Fast food consumption
-- Pimples
-- Weight
-- BMI
-
-The backend processes these features through the trained ML pipeline and
-returns a prediction result.
-
-### 📊 Prediction History
-
-- Store prediction results in MongoDB
-- User-specific history
-- Latest predictions shown first
-- Pagination support
-- Delete individual prediction records
-
-### 👤 User Profile
-
-- View authenticated user's profile
-- Username and email information
-- Protected using JWT authentication
-
-### 🚀 Production-Oriented Backend
-
-- Modular FastAPI architecture
-- Service-layer design
-- Pydantic request/response schemas
-- Centralized configuration
-- Logging
-- Custom exception handling
-- MongoDB Atlas integration
-- Swagger/OpenAPI documentation
-
----
-
-# 🏗️ Architecture
+## 🏗️ Architecture
 
 ```text
-                        ┌─────────────────────┐
-                        │     React Frontend  │
-                        │       (Vite)        │
-                        └──────────┬──────────┘
-                                   │
-                                Axios
-                                   │
-                                   ▼
-                        ┌─────────────────────┐
-                        │      FastAPI        │
-                        │       Backend       │
-                        └──────────┬──────────┘
-                                   │
-                ┌──────────────────┼──────────────────┐
-                │                  │                  │
-                ▼                  ▼                  ▼
-           JWT Auth          Prediction API      User APIs
-                │                  │                  │
-                │                  ▼                  │
-                │        ML Prediction Pipeline      │
-                │                  │                  │
-                │                  ▼                  │
-                │            ML Model                │
-                │                                     │
-
-
-└──────────────┬──────────────────────┘
-
-Project Structure
-
+React + Vite
+     │
+   Axios
+     │
+     ▼
+  FastAPI
+     │
+ ┌───┼──────────────┐
+ │   │              │
+Auth Prediction   Users
+ │   │              │
+ │   ▼              │
+ │ ML Pipeline      │
+ │   │              │
+ └───┼──────────────┘
+     ▼
+ MongoDB Atlas
+ ├── users_db
+ └── predict
+📁 Project Structure
 OvaSense/
-│
 ├── app/
-│   ├── api/
-│   │   ├── auth_routes.py
-│   │   ├── prediction_routes.py
-│   │   ├── history_routes.py
-│   │   └── user_routes.py
-│   │
-│   ├── auth/
-│   │   ├── dependencies.py
-│   │   ├── jwt_handler.py
-│   │   └── password.py
-│   │
-│   ├── core/
-│   │   └── config.py
-│   │
-│   ├── database/
-│   │   └── database.py
-│   │
-│   ├── schemas/
-│   │   ├── prediction_schema.py
-│   │   ├── history_schema.py
-│   │   ├── user_schema.py
-│   │   ├── register_schema.py
-│   │   └── login_schema.py
-│   │
-│   ├── services/
-│   │   ├── prediction_service.py
-│   │   ├── history_service.py
-│   │   └── user_service.py
-│   │
-│   └── main.py
-│
+│   ├── api/          # API routes
+│   ├── auth/         # JWT & password security
+│   ├── core/         # Configuration
+│   ├── database/     # MongoDB connection
+│   ├── schemas/      # Pydantic schemas
+│   ├── services/     # Business logic
+│   └── main.py       # FastAPI entry point
 ├── src/
-│   ├── components/
-│   ├── pipeline/
-│   │   └── prediction_pipeline.py
-│   │
-│   └── utils/
-│       ├── logger.py
-│       ├── exception.py
-│       └── common.py
-│
-├── models/
-│
-├── frontend/
-│   └── ...
-│
+│   ├── pipeline/     # ML prediction pipeline
+│   └── utils/        # Logging & exceptions
+├── models/           # Trained model artifacts
+├── frontend/         # React + Vite application
 ├── requirements.txt
 ├── .env
 ├── .gitignore
 └── README.md
-                               │
-                               ▼
-                         MongoDB Atlas
-                       ┌────────────────┐
-                       │   users_db     │
-                       │   predict      │
-                       └────────────────┘
+🛠️ Tech Stack
+ML: Python, NumPy, pandas, scikit-learn, MLflow
+Backend: FastAPI, Pydantic, Uvicorn, JWT, PyMongo
+Database: MongoDB Atlas
+Frontend: React, Vite, Axios, Tailwind CSS
+Tools: Git, GitHub, Docker (planned)
+🔄 Workflow
+Register → Login → JWT
+                  │
+                  ▼
+             Dashboard
+             ┌────┼────┐
+             ▼    ▼    ▼
+         Predict History Profile
+             │
+             ▼
+        ML Prediction
+             │
+             ▼
+       Save to MongoDB
+📡 API
+Method
+Endpoint
+Purpose
+POST
+/auth/register
+Register user
+POST
+/auth/login
+Authenticate user
+POST
+/predict/
+Generate prediction
+GET
+/predictions/
+Get prediction history
+DELETE
+/predictions/{id}
+Delete prediction
+GET
+/users/me
+Get user profile
+⚙️ Local Setup
+git clone https://github.com/<your-username>/OvaSense.git
+cd OvaSense
+
+python -m venv venv
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+uvicorn app.main:app --reload
+Create .env:
+MONGODB_URI=your_mongodb_connection_string
+DATABASE_NAME=PCOS_db
+SECRET_KEY=your_secret_key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+API documentation:
+http://127.0.0.1:8000/docs
+📌 Roadmap
+[x] ML prediction pipeline
+[x] MLflow integration
+[x] FastAPI backend
+[x] JWT authentication
+[x] MongoDB Atlas
+[x] Prediction history & pagination
+[x] Prediction deletion
+[x] User profile
+[ ] React frontend
+[ ] Responsive dashboard
+[ ] Automated testing
+[ ] Dockerization
+[ ] CI/CD
+[ ] Production deployment
+👩‍💻 Author
+Anushka Singh
+B.Tech — Artificial Intelligence & Data Science
+Focused on Machine Learning, AI, Generative AI, RAG, FastAPI and MLOps.
