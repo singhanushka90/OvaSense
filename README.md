@@ -110,7 +110,65 @@ returns a prediction result.
                 │                  ▼                  │
                 │            ML Model                │
                 │                                     │
-                └──────────────┬──────────────────────┘
+
+
+└──────────────┬──────────────────────┘
+
+Project Structure
+
+OvaSense/
+│
+├── app/
+│   ├── api/
+│   │   ├── auth_routes.py
+│   │   ├── prediction_routes.py
+│   │   ├── history_routes.py
+│   │   └── user_routes.py
+│   │
+│   ├── auth/
+│   │   ├── dependencies.py
+│   │   ├── jwt_handler.py
+│   │   └── password.py
+│   │
+│   ├── core/
+│   │   └── config.py
+│   │
+│   ├── database/
+│   │   └── database.py
+│   │
+│   ├── schemas/
+│   │   ├── prediction_schema.py
+│   │   ├── history_schema.py
+│   │   ├── user_schema.py
+│   │   ├── register_schema.py
+│   │   └── login_schema.py
+│   │
+│   ├── services/
+│   │   ├── prediction_service.py
+│   │   ├── history_service.py
+│   │   └── user_service.py
+│   │
+│   └── main.py
+│
+├── src/
+│   ├── components/
+│   ├── pipeline/
+│   │   └── prediction_pipeline.py
+│   │
+│   └── utils/
+│       ├── logger.py
+│       ├── exception.py
+│       └── common.py
+│
+├── models/
+│
+├── frontend/
+│   └── ...
+│
+├── requirements.txt
+├── .env
+├── .gitignore
+└── README.md
                                │
                                ▼
                          MongoDB Atlas
