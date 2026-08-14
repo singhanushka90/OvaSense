@@ -1,176 +1,142 @@
-# 🩺 PCOS Detection System
+# OvaSense 🩺
 
-A production-ready Machine Learning application for predicting **Polycystic Ovary Syndrome (PCOS)** using clinical and lifestyle features. The project follows a modular MLOps architecture with FastAPI backend, JWT authentication, MongoDB, and an end-to-end ML pipeline.
+> **AI-Powered PCOS Screening & Prediction Platform**
 
----
+OvaSense is an end-to-end Machine Learning application that provides AI-based PCOS screening predictions from selected clinical and lifestyle features. It combines an ML prediction pipeline with a secure FastAPI backend, JWT authentication, MongoDB Atlas, MLflow, and a React-based frontend.
 
-## 🚀 Features
+> ⚠️ **Disclaimer:** OvaSense is an educational screening project. Its predictions are not a medical diagnosis and should not replace professional medical advice or clinical evaluation.
 
-- End-to-End ML Pipeline
-- Data Validation
-- Feature Engineering
-- Data Transformation
-- Model Training
-- Model Evaluation
-- Prediction Pipeline
-- FastAPI REST API
-- JWT Authentication
-- MongoDB Atlas Integration
-- Modular Project Structure
-- Logging & Exception Handling
-- YAML-based Configuration
+## ✨ Features
 
----
+- 🤖 ML-based PCOS screening prediction
+- 🔐 JWT authentication & secure password hashing
+- 👤 User registration, login & profile
+- 🔮 Real-time prediction API
+- 📊 User-specific prediction history
+- 📄 Pagination & prediction deletion
+- 🗄️ MongoDB Atlas integration
+- 📈 MLflow experiment tracking
+- 📝 Logging & custom exception handling
+- ⚡ FastAPI + Swagger/OpenAPI
+- 🎨 React frontend with modern responsive UI
 
-## 🛠️ Tech Stack
-
-### Machine Learning
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- XGBoost
-
-### Backend
-- FastAPI
-- Pydantic
-- Uvicorn
-
-### Authentication
-- JWT (python-jose)
-- Passlib (bcrypt)
-
-### Database
-- MongoDB Atlas
-- PyMongo
-
-### MLOps
-- DVC
-- DVCLive
-- YAML Configuration
-
----
-
-## 📂 Project Structure
+## 🏗️ Architecture
 
 ```text
-PCOS_Detection/
-│
+React + Vite
+     │
+   Axios
+     │
+     ▼
+  FastAPI
+     │
+ ┌───┼──────────────┐
+ │   │              │
+Auth Prediction   Users
+ │   │              │
+ │   ▼              │
+ │ ML Pipeline      │
+ │   │              │
+ └───┼──────────────┘
+     ▼
+ MongoDB Atlas
+ ├── users_db
+ └── predict
+📁 Project Structure
+OvaSense/
 ├── app/
+│   ├── api/          # API routes
+│   ├── auth/         # JWT & password security
+│   ├── core/         # Configuration
+│   ├── database/     # MongoDB connection
+│   ├── schemas/      # Pydantic schemas
+│   ├── services/     # Business logic
+│   └── main.py       # FastAPI entry point
 ├── src/
-├── config/
-├── artifacts/
-├── notebook/
-├── logs/
-├── train.py
-├── predict.py
+│   ├── pipeline/     # ML prediction pipeline
+│   └── utils/        # Logging & exceptions
+├── models/           # Trained model artifacts
+├── frontend/         # React + Vite application
 ├── requirements.txt
+├── .env
+├── .gitignore
 └── README.md
-```
+🛠️ Tech Stack
+ML: Python, NumPy, pandas, scikit-learn, MLflow
+Backend: FastAPI, Pydantic, Uvicorn, JWT, PyMongo
+Database: MongoDB Atlas
+Frontend: React, Vite, Axios, Tailwind CSS
+Tools: Git, GitHub, Docker (planned)
+🔄 Workflow
+Register → Login → JWT
+                  │
+                  ▼
+             Dashboard
+             ┌────┼────┐
+             ▼    ▼    ▼
+         Predict History Profile
+             │
+             ▼
+        ML Prediction
+             │
+             ▼
+       Save to MongoDB
+📡 API
+Method
+Endpoint
+Purpose
+POST
+/auth/register
+Register user
+POST
+/auth/login
+Authenticate user
+POST
+/predict/
+Generate prediction
+GET
+/predictions/
+Get prediction history
+DELETE
+/predictions/{id}
+Delete prediction
+GET
+/users/me
+Get user profile
+⚙️ Local Setup
+git clone https://github.com/<your-username>/OvaSense.git
+cd OvaSense
 
----
+python -m venv venv
+venv\Scripts\activate
 
-## 📊 Selected Features
+pip install -r requirements.txt
 
-- Follicle No. (R)
-- Follicle No. (L)
-- Skin Darkening
-- Hair Growth
-- Weight Gain
-- Cycle(R/I)
-- Fast Food
-- Pimples
-- BMI
-- Weight
-
-Target Variable:
-
-- PCOS (Y/N)
-
----
-
-## ⚙️ Machine Learning Pipeline
-
-```
-Data Ingestion
-      │
-      ▼
-Data Validation
-      │
-      ▼
-Feature Engineering
-      │
-      ▼
-Data Transformation
-      │
-      ▼
-Model Training
-      │
-      ▼
-Model Evaluation
-      │
-      ▼
-Prediction Pipeline
-```
-
----
-
-## 🔐 Authentication Flow
-
-```
-Register
-     │
-     ▼
-Password Hashing
-     │
-     ▼
-MongoDB Atlas
-     │
-     ▼
-Login
-     │
-     ▼
-JWT Access Token
-     │
-     ▼
-Protected Prediction API
-```
-
----
-
-## 🌐 API Endpoints
-
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| GET | / | Home |
-| POST | /auth/register | Register User |
-| POST | /auth/login | User Login |
-| POST | /predict | Predict PCOS (Protected) |
-
----
-
-## 📈 Model
-
-Current Best Model:
-
-- XGBoost Classifier
-
----
-
-## 📌 Future Improvements
-
-- React Frontend
-- Prediction History
-- Docker
-- Docker Compose
-- GitHub Actions CI/CD
-- Model Monitoring
-- AWS Deployment
-
----
-
-## 👩‍💻 Author
-
-**Anushka Singh**
-
-AI Engineer (Student)
+uvicorn app.main:app --reload
+Create .env:
+MONGODB_URI=your_mongodb_connection_string
+DATABASE_NAME=PCOS_db
+SECRET_KEY=your_secret_key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+API documentation:
+http://127.0.0.1:8000/docs
+📌 Roadmap
+[x] ML prediction pipeline
+[x] MLflow integration
+[x] FastAPI backend
+[x] JWT authentication
+[x] MongoDB Atlas
+[x] Prediction history & pagination
+[x] Prediction deletion
+[x] User profile
+[ ] React frontend
+[ ] Responsive dashboard
+[ ] Automated testing
+[ ] Dockerization
+[ ] CI/CD
+[ ] Production deployment
+👩‍💻 Author
+Anushka Singh
+B.Tech — Artificial Intelligence & Data Science
+Focused on Machine Learning, AI, Generative AI, RAG, FastAPI and MLOps.
