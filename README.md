@@ -122,6 +122,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 API documentation:
 http://127.0.0.1:8000/docs
 📌 Roadmap
+
+
 [x] ML prediction pipeline
 [x] MLflow integration
 [x] FastAPI backend
@@ -136,6 +138,8 @@ http://127.0.0.1:8000/docs
 [ ] Dockerization
 [ ] CI/CD
 [ ] Production deployment
+
+
 👩‍💻 Author
 Anushka Singh
 B.Tech — Artificial Intelligence & Data Science
