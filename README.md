@@ -61,7 +61,9 @@ OvaSense/
 ├── .env
 ├── .gitignore
 └── README.md
+
 🛠️ Tech Stack
+
 ML: Python, NumPy, pandas, scikit-learn, MLflow
 Backend: FastAPI, Pydantic, Uvicorn, JWT, PyMongo
 Database: MongoDB Atlas
