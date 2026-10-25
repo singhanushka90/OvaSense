@@ -1,4 +1,4 @@
-# Ovaense 🩺
+# OvaSense 🩺
 
 > **AI-Powered PCOS Screening & Prediction Platform**
 
