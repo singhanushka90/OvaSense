@@ -134,7 +134,7 @@ http://127.0.0.1:8000/docs
 [x] Prediction history & pagination
 [x] Prediction deletion
 [x] User profile
-[ ] React frontend
+[×] React frontend
 [ ] Responsive dashboard
 [ ] Automated testing
 [ ] Dockerization
